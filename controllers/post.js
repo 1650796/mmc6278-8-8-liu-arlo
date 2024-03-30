@@ -34,7 +34,7 @@ async function get(req, res) {
     // TODO: Find a single post
     // find a single post by slug and populate 'tags'
     // you will need to use .lean() or .toObject()
-    const post = await Post.findById(slug).populate('tags').lean()
+    const post = await Post.findOne({slug}).populate('tags').lean()
 
     post.createdAt = new Date(post.createdAt).toLocaleString('en-US', {
       month: '2-digit',
